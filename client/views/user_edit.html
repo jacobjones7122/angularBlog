@@ -1,0 +1,24 @@
+<br />
+<div id="list">
+    <br />
+    <div id="inputValBox">
+        <p class="inputBox">Update Firstname: </p><input type="text" id="userFirstname" ng-model="Firstname">
+        <br />
+        <br />
+        <p class="inputBox">Update Lastname: </p><input type="text" id="userLastname" ng-model="Lastname">
+        <br />
+        <br />
+        <p>Update Email: </p><input type="text" id="userEmail" ng-model="Email">
+        <br />
+        <br />
+        <p>Choose Roll: </p>
+        <select id="adminOptions">
+                <option value="user">user</option>
+                <option value="admin">admin</option>
+            </select>
+    </div>        
+    <br />
+    <button ng-click="UpdateUser()">Update!</button> 
+    <br />
+    <button ng-click="DeleteUser()">Delete</button>
+</div>

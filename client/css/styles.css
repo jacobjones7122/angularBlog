@@ -1,0 +1,84 @@
+#canvas {
+    position: absolute;
+    z-index: -1;
+    background-color: rgb(41, 41, 41);
+    margin: 0;
+    padding: 0;
+}
+
+#list {
+    border: 3px solid rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 60%;
+    height: 600px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    margin: auto;
+}
+
+#messageBox{
+    margin-left: 30px;
+}
+
+#inputValBox{
+    margin-left: 30px;
+}
+
+#messageDiv{
+    width: 100%;
+    margin: auto;
+}
+
+#btnCompose{
+    float: right; 
+}
+
+.navbar-nav li {
+   list-style-type: none; 
+}
+
+.navbar-toggler{
+    visibility: hidden;
+}
+
+h1{
+    color: white;
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+}
+
+.page-header{
+    background-color: rgb(41, 41, 41);
+    padding: 0;
+    margin: 0;
+}
+
+.hero-text_heading{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(41, 41, 41);
+
+}
+
+#navbar{
+    background-color: rgb(41, 41, 41);
+}
+
+#blogList{
+    height: 80%;
+    width: 80%;
+    overflow-y: scroll; 
+    margin: auto;
+    border: 3px solid rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.blogPostTitle{
+    font-weight: bold;
+}

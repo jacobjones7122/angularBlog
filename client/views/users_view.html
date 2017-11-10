@@ -1,0 +1,18 @@
+<div id="list">
+    <br />
+    <a href="/user_create">Create User</a>
+    <br />
+    <br />
+    <div id="blogList">
+        <div ng-repeat="user in users" id="{{ user.id }}">
+            <h3> {{ user.firstname }} {{ user.lastname }} </h3>
+            <h4> 
+                {{ user.email }} 
+                <br />
+                {{ user.roll }}
+            </h4>
+            <a href="/user_edit/{{ user.id }}">Edit</a>
+            <br />
+        </div>
+    </div>
+</div>

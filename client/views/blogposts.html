@@ -1,0 +1,14 @@
+<br />
+    <button id="btnCompose" ng-click="composeBtn()">COMPOSE!</button>
+    <br />
+<div id="list">
+    <h2>Blog Posts!!!</h2>
+    <div id="blogList">    
+        <div class="blogPosts" ng-repeat="post in blogPosts" id="{{ post.id }}">
+            <h4 class="blogPostTitle">{{ post.title }}</h4> 
+            <h5>Written by {{ post.firstname + ' ' + post.lastname }} - Category: {{ post.name }}</h5> 
+            <h5>{{ post.createdAt | date: 'short' }} <a href="/singlepost/{{ post.id }}">Read</a></h5>
+            <br />
+        </div>
+    </div>
+</div>

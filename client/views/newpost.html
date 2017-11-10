@@ -1,0 +1,30 @@
+<br />
+<button id="btnCompose" ng-click="composeBtn()">COMPOSE!</button>
+<br />
+<div id="list">
+    <br />
+    <div id="inputValBox">
+        <p class="inputBox">Title: </p><input type="text" id="postTitle" ng-model="newTitle">
+        <br />
+        <br />
+        <p>Choose Author: </p>
+        <select id="userOption">
+            <option class="options" ng-repeat="users in username" value="{{users.id}}">{{ users.firstname }}  {{ users.lastname }}</option>
+        </select>
+        <br />
+        <br />
+        <p>Choose Category: </p>
+        <select id="categoriesOption">
+            <option class="options" ng-repeat="cat in categories" id="{{cat.id}}" value="{{cat.id}}">{{ cat.name }}</option>
+        </select>
+        <br />
+        <br />
+        <p>Contents: </p>
+    </div>
+    <div id="messageDiv"><textarea name="paragraph_text" cols="90%" rows="10" id="messageBox" ng-model="newContent"></textarea></div>
+    <br />
+    <br />
+    <div id="inputValBox">
+        <button id="btnPost" ng-click="contentPost()">Save Post</button>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<br />
+<button id="btnCompose" ng-click="composeBtn()">COMPOSE!</button>
+<br />
+<div id="list">
+    <br />
+    <div id="inputValBox">
+        <p class="inputBox">Update Title: </p><input type="text" id="postTitle" ng-model="newTitle">
+        <br />
+        <br />
+        <p>Update Category: </p>
+        <select id="categoriesOption">
+            <option class="options" ng-repeat="cat in categories" value="{{cat.id}}">{{ cat.name }}</option>
+        </select>
+        <br />
+        <br />
+        <p>Update Contents: </p>
+        <div id="messageDiv"><textarea name="paragraph_text" cols="90%" rows="10" id="messageBox" ng-model="newContent"></textarea></div>
+    </div>
+    <br />
+    <div id="inputValBox">
+        <button id="btnUpdate" ng-click="updatePost()">Update!</button>         
+        <br />
+        <button id="btnDelete" ng-click="deletePost()">Delete!</button>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<br />
+<button id="btnCompose" ng-click="composeBtn()">COMPOSE!</button>
+<br />
+<div id="list">
+    <div id="inputValBox">
+    <br />
+    <div>
+        <div class="blogPosts" id="{{ post.id }}">
+            <h3>{{ post.title }}</h3> 
+            <h5>Written by {{ post.firstname }} {{ post.lastname }} - Category: {{ post.name }} </h5> 
+            <h5>{{ post.createdAt | date: 'short' }} </h5>
+            <p> {{ post.content }} </p>
+        </div>
+    </div>
+    <br />
+    <br />
+    <a href="/updatepost/{{ post.id }}">Edit</a>
+    </div>
+</div>
