@@ -62,4 +62,12 @@ angular.module('myBlogApp.services', [])
            });
        }
    }
+
+   //Root Scope SEO
+//    this.setSEO = function(data) {
+//        $rootScope.seo = {};
+//        for(var p in data) {
+//            $rootScope.seo[p] = data[p];
+//        }
+//    }
 }]);

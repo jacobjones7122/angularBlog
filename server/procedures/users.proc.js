@@ -16,7 +16,6 @@ function read(id) {
 exports.read = read;
 function createUser(firstname, lastname, email, password) {
     console.log('in the proc');
-    console.log(firstname, lastname, email, password);
     return db_1.rows('InsertUser', [firstname, lastname, email, password]);
 }
 exports.createUser = createUser;

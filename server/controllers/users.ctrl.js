@@ -2,8 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const procedures = require("../procedures/users.proc");
+const auth = require("../middleware/auth.mw");
 const passport = require("passport");
-// import * as utils from '../utils';
+const utils = require("../utils");
 let router = express.Router();
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', (err, user, info) => {
@@ -25,18 +26,19 @@ router.post('/login', (req, res, next) => {
     })(req, res, next);
 });
 // router.all('*', auth.isLoggedIn);
-router.post('/', (req, res) => {
-    console.log('here');
-    console.log(req.body);
-    procedures.createUser(req.body.firstname, req.body.lastname, req.body.email, req.body.password)
-        .then(function (id) {
+router.post('/', auth.isAdmin, (req, res) => {
+    utils.encryptPassword(req.body.password)
+        .then((hash) => {
+        return procedures.createUser(req.body.firstname, req.body.lastname, req.body.email, hash);
+    })
+        .then((id) => {
         res.status(201).send(id);
-    }).catch(function (err) {
+    }).catch((err) => {
         console.log(err);
         res.sendStatus(500);
     });
 });
-router.post('/:id', (req, res) => {
+router.post('/:id', auth.isAdmin, (req, res) => {
     procedures.updateUser(req.body.id, req.body.firstname, req.body.lastname, req.body.email)
         .then(function (id) {
         res.status(201).send(id);
@@ -45,11 +47,20 @@ router.post('/:id', (req, res) => {
         res.sendStatus(500);
     });
 });
-router.delete('/:id', (req, res) => {
+router.delete('/:id', auth.isLoggedIn, (req, res) => {
     procedures.destroyUser(req.params.id)
         .then(function () {
         res.sendStatus(204);
     }).catch(function (err) {
+        console.log(err);
+        res.sendStatus(500);
+    });
+});
+router.get('/', auth.isLoggedIn, (req, res) => {
+    procedures.all()
+        .then((users) => {
+        res.send(users);
+    }).catch((err) => {
         console.log(err);
         res.sendStatus(500);
     });
@@ -64,14 +75,5 @@ router.get('/logout', (req, res) => {
 });
 router.get('/me', function (req, res) {
     res.send(req.user);
-});
-router.get('/', (req, res) => {
-    procedures.all()
-        .then((users) => {
-        res.send(users);
-    }).catch((err) => {
-        console.log(err);
-        res.sendStatus(500);
-    });
 });
 exports.default = router;

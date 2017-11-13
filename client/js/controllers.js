@@ -1,6 +1,14 @@
 var app = angular.module('myBlogApp.controllers', []);
 
 app.controller('newPostController', ['$scope', '$location', 'Post', 'Categories', 'User', function($scope, $location, Post, Categories, User){
+
+    // SEOService.setSEO({
+    //     title: 'New Blog Post',
+    //     image: 'http://' + $location.host() + '/images/contact-us-graphic.png',
+    //     url: $location.url(),
+    //     description: 'A user can create a new blog post.'
+    // });
+
     $scope.username = User.query();
     $scope.categories = Categories.query();
     $scope.contentPost = function(){
@@ -22,6 +30,14 @@ app.controller('newPostController', ['$scope', '$location', 'Post', 'Categories'
 }]);
 
 app.controller('blogPostsController', ['$scope', '$location', 'Post', 'Categories', 'User', function($scope, $location, Post, Categories, User){
+    
+    // SEOService.setSEO({
+    //     title: "Homepage for Jacob's Blog",
+    //     image: 'http://' + $location.host() + '/images/contact-us-graphic.png',
+    //     url: $location.url(),
+    //     description: "The homepage for Jacob's blog. The titles for all blog posts are avaliable for view here."
+    // });
+    
     $scope.blogPosts = Post.query();
     $scope.composeBtn = function(){
         $location.path('/newpost');
@@ -29,6 +45,7 @@ app.controller('blogPostsController', ['$scope', '$location', 'Post', 'Categorie
 }]);
 
 app.controller('singlePostController', ['$scope', '$routeParams', '$location', 'Post', 'Categories', 'User', function($scope, $routeParams, $location, Post, Categories, User){
+    
     let postId = $routeParams.id;
     function onePost(){
         $scope.post = Post.get({ id: postId}, function(success){
@@ -38,10 +55,26 @@ app.controller('singlePostController', ['$scope', '$routeParams', '$location', '
             }
         );
     }
-    onePost();
+    onePost();    
+    
+    // SEOService.setSEO({
+    //     title: '"' + getElement(h3).value + '"',
+    //     image: 'http://' + $location.host() + '/images/contact-us-graphic.png',
+    //     url: $location.url(),
+    //     description: "Viewing of a single post."
+    // });
+
 }]);
 
 app.controller('updatePostController', ['$scope', '$routeParams', '$location', 'Post', 'Categories', 'User', 'UserService', function($scope, $routeParams, $location, Post, Categories, User, UserService){
+    
+    // SEOService.setSEO({
+    //     title: 'Update Blog Post',
+    //     image: 'http://' + $location.host() + '/images/contact-us-graphic.png',
+    //     url: $location.url(),
+    //     description: 'A user can update a blog post they made previously.'
+    // });
+
     let postId = $routeParams.id;
     $scope.username = User.query();
     $scope.categories = Categories.query();
@@ -94,6 +127,14 @@ app.controller('updatePostController', ['$scope', '$routeParams', '$location', '
 }]);
 
 app.controller('UserListController', ['$scope', '$routeParams', 'User', '$location', function($scope, $routeParams, User, $location){
+    
+    // SEOService.setSEO({
+    //     title: 'User List',
+    //     image: 'http://' + $location.host() + '/images/contact-us-graphic.png',
+    //     url: $location.url(),
+    //     description: 'Viewing, creating, or editing of users. This is only accessiable by admin.'
+    // });
+    
     $scope.users = User.query();
     console.log(User.query());
     var userId = $routeParams.id;
@@ -143,6 +184,14 @@ app.controller('UserListController', ['$scope', '$routeParams', 'User', '$locati
 }]);
 
 app.controller('LoginController', ['$scope', '$location', 'UserService', function ($scope, $location, UserService) {
+    
+    // SEOService.setSEO({
+    //     title: 'Login Page',
+    //     image: 'http://' + $location.host() + '/images/contact-us-graphic.png',
+    //     url: $location.url(),
+    //     description: 'Login Page for users.'
+    // });
+    
     UserService.me().then((success) => {
         redirect();
     });
