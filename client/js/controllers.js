@@ -100,7 +100,7 @@ app.controller('UserListController', ['$scope', '$routeParams', 'User', '$locati
 
     $scope.CreateUser = function(){
         var u = new User($scope.newUser);
-        console.log($scope.newUser);
+        console.log(u);
         u.$save(function(success) {
             console.log('success');
             alert('New User Created! Please login when returned to the homepage.');

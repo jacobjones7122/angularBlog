@@ -4,6 +4,6 @@ declare namespace models {
         email: string;
         firstname: string;
         lastname: string;
-        password: any;
+        password: string;
     }
 }

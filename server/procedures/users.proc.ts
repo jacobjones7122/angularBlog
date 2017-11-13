@@ -15,6 +15,8 @@ export function read(id: number): Promise<models.Iusers> {
 }
 
 export function createUser(firstname: string, lastname: string, email: string, password: string): Promise<models.Iusers> {
+    console.log('in the proc');
+    console.log(firstname, lastname, email, password);
     return rows('InsertUser', [firstname, lastname, email, password]);
 }
 

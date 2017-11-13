@@ -1,6 +1,6 @@
 var app = angular.module('myBlogApp', ['ngRoute', 'ngResource', 'myBlogApp.controllers', 'myBlogApp.factories', 'myBlogApp.services']);
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-    $locationProvider.html5Mode (true); //see if this is correct
+    $locationProvider.html5Mode (true);
     $routeProvider
     .when('/', {
         templateUrl: 'views/blogposts.html',
@@ -9,7 +9,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     .when('/newpost', {
         templateUrl: 'views/newpost.html',
         controller: 'newPostController',
-        requiresLogin: true
+        // requiresLogin: true
     })
     .when('/login', {
         templateUrl: 'views/login.html',
@@ -39,25 +39,25 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     .when('/updatepost/:id', {
         templateUrl: 'views/updatepost.html',
         controller: 'updatePostController',
-        requiresLogin: true
+        // requiresLogin: true
     })
     .otherwise({
         redirectTo: '/'
     });
 }])
-.run(['$rootScope', '$location', 'UserService', function($rootScope, $location, UserService) {
-    $rootScope.$on('$routeChangeStart', function(event, nextRoute, previousRoute) {
-        if (nextRoute.$$route.requiresLogin && !UserService.isLoggedIn()) {
-            event.preventDefault();
-            UserService.loginRedirect();
-        }
-    });
-}])
-.run(['$rootScope', '$location', 'UserService', function($rootScope, $location, UserService) {
-    $rootScope.$on('$routeChangeStart', function(event, nextRoute, previousRoute){
-        if (nextRoute.$$route.requiresAdmin && !UserService.isAdmin()) {
-            event.preventDefault();
-            UserService.loginRedirect();
-        }
-    });
-}]);
+// .run(['$rootScope', '$location', 'UserService', function($rootScope, $location, UserService) {
+//     $rootScope.$on('$routeChangeStart', function(event, nextRoute, previousRoute) {
+//         if (nextRoute.$$route.requiresLogin && !UserService.isLoggedIn()) {
+//             event.preventDefault();
+//             UserService.loginRedirect();
+//         }
+//     });
+// }])
+// .run(['$rootScope', '$location', 'UserService', function($rootScope, $location, UserService) {
+//     $rootScope.$on('$routeChangeStart', function(event, nextRoute, previousRoute){
+//         if (nextRoute.$$route.requiresAdmin && !UserService.isAdmin()) {
+//             event.preventDefault();
+//             UserService.loginRedirect();
+//         }
+//     });
+// }]);

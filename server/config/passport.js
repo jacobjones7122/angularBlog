@@ -5,7 +5,7 @@ const session = require("express-session");
 let MySQLStore = require('express-mysql-session')(session);
 const passport_local_1 = require("passport-local");
 const userProc = require("../procedures/users.proc");
-const utils = require("../utils");
+// import * as utils from '../utils';
 const db_1 = require("./db");
 function confirgurePassport(app) {
     passport.use(new passport_local_1.Strategy({
@@ -16,29 +16,28 @@ function confirgurePassport(app) {
             if (!user) {
                 return done(null, false);
             }
-            return utils.checkPassword(password, user.password)
-                .then((matches) => {
-                console.log('here under matches');
-                console.log(matches);
-                console.log(password);
-                console.log(user.password);
-                if (matches) {
-                    delete user.password;
-                    return done(null, user);
-                }
-                else {
-                    return done(null, false, { message: 'Invalid Login Username/Password' });
-                }
-            });
-            // if (user.password !== password) {
-            //     return done(null, false, {message: 'Nope!'});
-            // }
-            // console.log('email and password are good to go.');
-            // return done(null, user);
-            // }, (err) => { return done(err); });
-        }).catch((err) => {
-            return done(err);
-        });
+            // return utils.checkPassword(password, user.password)
+            // .then((matches) => {
+            //     console.log('here under matches');
+            //     console.log(matches);
+            //     console.log(password);
+            //     console.log(user.password);
+            //     if (matches) {
+            //         delete user.password;
+            //         return done(null, user);
+            //     } else {
+            //         return done(null, false, { message: 'Invalid Login Username/Password' });
+            //     }
+            // });
+            if (user.password !== password) {
+                return done(null, false, { message: 'Nope!' });
+            }
+            console.log('email and password are good to go.');
+            return done(null, user);
+        }, (err) => { return done(err); });
+        // }).catch((err) => {
+        //     return done(err);
+        // });
     }));
     passport.serializeUser((user, done) => {
         done(null, user.id);
