@@ -1,14 +1,12 @@
 var app = angular.module('myBlogApp.controllers', []);
 
-app.controller('newPostController', ['$scope', '$location', 'Post', 'Categories', 'User', function($scope, $location, Post, Categories, User){
-
-    // SEOService.setSEO({
-    //     title: 'New Blog Post',
-    //     image: 'http://' + $location.host() + '/images/contact-us-graphic.png',
-    //     url: $location.url(),
-    //     description: 'A user can create a new blog post.'
-    // });
-
+app.controller('newPostController', ['SEOService', '$scope', '$location', 'Post', 'Categories', 'User', function(SEOService, $scope, $location, Post, Categories, User){
+    SEOService.setSEO({
+        title: 'New Blog Post',
+        image: 'https://static.pexels.com/photos/574073/pexels-photo-574073.jpeg',
+        url: $location.url(),
+        description: 'A user can create a new blog post.'
+    });
     $scope.username = User.query();
     $scope.categories = Categories.query();
     $scope.contentPost = function(){
@@ -29,26 +27,30 @@ app.controller('newPostController', ['$scope', '$location', 'Post', 'Categories'
     };
 }]);
 
-app.controller('blogPostsController', ['$scope', '$location', 'Post', 'Categories', 'User', function($scope, $location, Post, Categories, User){
-    
-    // SEOService.setSEO({
-    //     title: "Homepage for Jacob's Blog",
-    //     image: 'http://' + $location.host() + '/images/contact-us-graphic.png',
-    //     url: $location.url(),
-    //     description: "The homepage for Jacob's blog. The titles for all blog posts are avaliable for view here."
-    // });
-    
+app.controller('blogPostsController', ['SEOService', '$scope', '$location', 'Post', 'Categories', 'User', function(SEOService, $scope, $location, Post, Categories, User){
+    SEOService.setSEO({
+        title: "Homepage for Jacob's Blog",
+        image: 'https://static.pexels.com/photos/574073/pexels-photo-574073.jpeg',
+        url: $location.url(),
+        description: "The homepage for Jacob's blog. The titles for all blog posts are avaliable for view here."
+    });
     $scope.blogPosts = Post.query();
     $scope.composeBtn = function(){
         $location.path('/newpost');
     };
 }]);
 
-app.controller('singlePostController', ['$scope', '$routeParams', '$location', 'Post', 'Categories', 'User', function($scope, $routeParams, $location, Post, Categories, User){
+app.controller('singlePostController', ['SEOService', '$scope', '$routeParams', '$location', 'Post', 'Categories', 'User', function(SEOService, $scope, $routeParams, $location, Post, Categories, User){
+    SEOService.setSEO({
+        title: "Full Blog Post",
+        image: 'https://static.pexels.com/photos/574073/pexels-photo-574073.jpeg',
+        url: $location.url(),
+        description: "Viewing of a single post."
+    });
     
     let postId = $routeParams.id;
     function onePost(){
-        $scope.post = Post.get({ id: postId}, function(success){
+        $scope.post = Post.get({id: postId}, function(success){
                 console.log('working');
             }, function(err){
                 console.log('error');
@@ -56,24 +58,18 @@ app.controller('singlePostController', ['$scope', '$routeParams', '$location', '
         );
     }
     onePost();    
-    
-    // SEOService.setSEO({
-    //     title: '"' + getElement(h3).value + '"',
-    //     image: 'http://' + $location.host() + '/images/contact-us-graphic.png',
-    //     url: $location.url(),
-    //     description: "Viewing of a single post."
-    // });
+
 
 }]);
 
-app.controller('updatePostController', ['$scope', '$routeParams', '$location', 'Post', 'Categories', 'User', 'UserService', function($scope, $routeParams, $location, Post, Categories, User, UserService){
+app.controller('updatePostController', ["SEOService", '$scope', '$routeParams', '$location', 'Post', 'Categories', 'User', 'UserService', function(SEOService, $scope, $routeParams, $location, Post, Categories, User, UserService){
     
-    // SEOService.setSEO({
-    //     title: 'Update Blog Post',
-    //     image: 'http://' + $location.host() + '/images/contact-us-graphic.png',
-    //     url: $location.url(),
-    //     description: 'A user can update a blog post they made previously.'
-    // });
+    SEOService.setSEO({
+        title: 'Update Blog Post',
+        image: 'https://static.pexels.com/photos/574073/pexels-photo-574073.jpeg',
+        url: $location.url(),
+        description: 'A user can update a blog post they made previously.'
+    });
 
     let postId = $routeParams.id;
     $scope.username = User.query();
@@ -97,7 +93,6 @@ app.controller('updatePostController', ['$scope', '$routeParams', '$location', '
             categoryId: $('#categoriesOption').val(),
             content: $scope.newContent
         });
-        console.log(p);
         p.$save({id: postId}, function(success){
             console.log('success')
             alert('Post was Updated!');
@@ -126,31 +121,28 @@ app.controller('updatePostController', ['$scope', '$routeParams', '$location', '
     };
 }]);
 
-app.controller('UserListController', ['$scope', '$routeParams', 'User', '$location', function($scope, $routeParams, User, $location){
+app.controller('UserListController', ['SEOService', '$scope', '$routeParams', 'User', '$location', function(SEOService, $scope, $routeParams, User, $location){
     
-    // SEOService.setSEO({
-    //     title: 'User List',
-    //     image: 'http://' + $location.host() + '/images/contact-us-graphic.png',
-    //     url: $location.url(),
-    //     description: 'Viewing, creating, or editing of users. This is only accessiable by admin.'
-    // });
-    
+    SEOService.setSEO({
+        title: 'User List',
+        image: 'https://static.pexels.com/photos/574073/pexels-photo-574073.jpeg',
+        url: $location.url(),
+        description: 'Viewing, creating, or editing of users. This is only accessiable by admin.'
+    });    
     $scope.users = User.query();
-    console.log(User.query());
     var userId = $routeParams.id;
 
     $scope.CreateUser = function(){
         var u = new User($scope.newUser);
-        console.log(u);
         u.$save(function(success) {
             console.log('success');
             alert('New User Created! Please login when returned to the homepage.');
             $location.path('/');
         }, function(error) {
+            $location.path('/');
             console.log('error')
         });
     }
-
     $scope.DeleteUser = function(){
         if (confirm('Are you sure you wish to delete this user?')) {
             $scope.user = new User({
@@ -164,14 +156,14 @@ app.controller('UserListController', ['$scope', '$routeParams', 'User', '$locati
             });
         };
     }
-
     $scope.UpdateUser = function(){
         var userId = $routeParams.id;
         var p = new User({
             id: userId,
             firstname: $scope.Firstname,
             lastname: $scope.Lastname,
-            email: $scope.Email
+            email: $scope.Email,
+            roll: document.getElementById('adminOptions').value
         });
         p.$save({id: userId}, function(success){
             console.log('success')
@@ -183,15 +175,13 @@ app.controller('UserListController', ['$scope', '$routeParams', 'User', '$locati
     };
 }]);
 
-app.controller('LoginController', ['$scope', '$location', 'UserService', function ($scope, $location, UserService) {
-    
-    // SEOService.setSEO({
-    //     title: 'Login Page',
-    //     image: 'http://' + $location.host() + '/images/contact-us-graphic.png',
-    //     url: $location.url(),
-    //     description: 'Login Page for users.'
-    // });
-    
+app.controller('LoginController', ['SEOService', '$scope', '$location', 'UserService', function (SEOService, $scope, $location, UserService) {
+    SEOService.setSEO({
+        title: 'Login Page',
+        image: 'https://static.pexels.com/photos/574073/pexels-photo-574073.jpeg',
+        url: $location.url(),
+        description: 'Login Page for users.'
+    });
     UserService.me().then((success) => {
         redirect();
     });
@@ -201,17 +191,15 @@ app.controller('LoginController', ['$scope', '$location', 'UserService', functio
         if (!dest) { dest = '/'; }
         $location.replace().path(dest).search('dest', null);
     }
-
     $scope.login = function() {
         UserService.login($scope.email, $scope.password)
         .then(() => {
             redirect();
         }, (err) => {
-            alert("Oh snap it's an error!")
-            console.log("Oh snap it's an error!" + err);
+            alert("Incorrect Username/Password");
+            console.log("error");
         });
     }
-
     $scope.logout = function(){
         UserService.logout().then($location.path('/'));
     }

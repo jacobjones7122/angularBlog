@@ -9,9 +9,11 @@ export function isLoggedIn(req: Request, res: Response, next: NextFunction) {
 }
 
 export function isAdmin(req: Request, res: Response, next: NextFunction) {
-    if (req.user.role === 'admin') {
+    if (req.user.roll === 'admin') {
         next();
     } else {
         res.sendStatus(403);
     }
 }
+
+//RowDataPacket.roll

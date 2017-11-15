@@ -10,7 +10,7 @@ function isLoggedIn(req, res, next) {
 }
 exports.isLoggedIn = isLoggedIn;
 function isAdmin(req, res, next) {
-    if (req.user.role === 'admin') {
+    if (req.user.roll === 'admin') {
         next();
     }
     else {
@@ -18,3 +18,4 @@ function isAdmin(req, res, next) {
     }
 }
 exports.isAdmin = isAdmin;
+//RowDataPacket.roll 

@@ -15,16 +15,15 @@ function read(id) {
 }
 exports.read = read;
 function createUser(firstname, lastname, email, password) {
-    console.log('in the proc');
+    console.log('create user in the proc');
     return db_1.rows('InsertUser', [firstname, lastname, email, password]);
 }
 exports.createUser = createUser;
-function updateUser(id, firstname, lastname, email) {
-    return db.rows('UpdateUser', [id, firstname, lastname, email]);
+function updateUser(id, firstname, lastname, email, roll) {
+    return db.rows('UpdateUser', [id, firstname, lastname, email, roll]);
 }
 exports.updateUser = updateUser;
 function destroyUser(id) {
-    console.log('Here in the Delete Procedure!');
     return db.empty('DeleteUser', [id]);
 }
 exports.destroyUser = destroyUser;

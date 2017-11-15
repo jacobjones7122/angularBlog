@@ -1,4 +1,4 @@
-var app = angular.module('myBlogApp', ['ngRoute', 'ngResource', 'myBlogApp.controllers', 'myBlogApp.factories', 'myBlogApp.services']);
+var app = angular.module('myBlogApp', ['ngRoute', 'ngResource', 'myBlogApp.controllers', 'myBlogApp.factories', 'myBlogApp.services', 'myBlogApp.directive.navBar']);
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $locationProvider.html5Mode (true);
     $routeProvider

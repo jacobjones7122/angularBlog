@@ -33,7 +33,6 @@ router.route('/:id')
     });
 })
     .post(function (req, res) {
-    console.log('here');
     procedures.update(req.body.id, req.body.title, req.body.categoryId, req.body.content)
         .then(function (id) {
         res.status(201).send(id);

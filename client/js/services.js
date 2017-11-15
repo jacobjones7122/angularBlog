@@ -63,11 +63,14 @@ angular.module('myBlogApp.services', [])
        }
    }
 
-   //Root Scope SEO
-//    this.setSEO = function(data) {
-//        $rootScope.seo = {};
-//        for(var p in data) {
-//            $rootScope.seo[p] = data[p];
-//        }
-//    }
+
+}])
+    //Root Scope SEO
+.service('SEOService', ['$rootScope', function($rootScope) {
+    this.setSEO = function(data) {
+        $rootScope.seo = {};
+        for(var p in data) {
+            $rootScope.seo[p] = data[p];
+        }
+    }
 }]);

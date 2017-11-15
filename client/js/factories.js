@@ -1,7 +1,6 @@
 var app = angular.module('myBlogApp.factories', []);
     
     app.factory('User', ['$resource', function($resource){
-        console.log('In the factories');
         return $resource('/api/users/:id', { id: '@id' });  
     }]);
 

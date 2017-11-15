@@ -10,7 +10,6 @@ function read(id) {
 }
 exports.read = read;
 function update(id, title, categoryid, content) {
-    console.log(id, title, categoryid, content);
     return db.rows('UpdatePost', [id, title, categoryid, content]);
 }
 exports.update = update;

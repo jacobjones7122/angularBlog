@@ -42,7 +42,7 @@ router.post('/', auth.isAdmin, (req, res) => {
 })
 
 router.post('/:id', auth.isAdmin, (req, res) => {        
-    procedures.updateUser(req.body.id, req.body.firstname, req.body.lastname, req.body.email)
+    procedures.updateUser(req.body.id, req.body.firstname, req.body.lastname, req.body.email, req.body.roll)
     .then(function(id: object){
         res.status(201).send(id);
     }).catch(function(err: any){

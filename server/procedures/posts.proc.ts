@@ -9,7 +9,6 @@ export function read(id: number) {
 }
 
 export function update(id: number, title: string, categoryid: number, content: string) {
-    console.log(id, title, categoryid, content);
     return db.rows('UpdatePost', [id, title, categoryid, content]);
 }
 

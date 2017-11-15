@@ -3,10 +3,11 @@
   "version": "0.0.1",
   "main": "server/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "source variables && npm run dev",
     "build:ts": "tsc -p .",
     "server": "node server/server.js",
-    "start": "nodemon -e ts --dir server/ --exec \"npm run build:ts && npm run server\""
+    "dev": "nodemon -e ts --dir server/ --exec \"npm run start\"",
+    "start": "npm run build:ts && npm run server"
   },
   "author": "Platypi",
   "license": "MIT",
@@ -26,7 +27,8 @@
     "nodemon": "latest",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "prerender-node": "^2.7.4"
   },
   "devDependencies": {
     "typescript": "^2.6.1"

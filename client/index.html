@@ -1,9 +1,10 @@
 <!doctype html>
 <html x-ng-app="myBlogApp">
 	<head>
-		<!-- <meta charset="utf-8">
+		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
 		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+		<meta name="fragment" content="!"> 
 
 		<title>{{ seo.title }}</title>
 		<meta property="og:title" content="{{ seo.title }}">
@@ -14,7 +15,7 @@
 		<meta property="twitter:url" content="{{ seo.url }}">
 		<meta property="description" content="{{ seo.description }}">
 		<meta property="og:description" content="{{ seo.description }}">
-		<meta property="twitter:description" content="{{ seo.description }}"> -->
+		<meta property="twitter:description" content="{{ seo.description }}">
 
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<link rel="stylesheet" href="css/styles.css">
@@ -24,26 +25,24 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-resource.js"></script>
 		<script src="js/app.js"></script>
+		<script src="js/directive.js"></script>
 		<script src="js/factories.js"></script>
 		<script src="js/controllers.js"></script>
 		<script src="js/draw.js"></script>
 		<script src="js/services.js"></script>
-		<!-- <script src="js/SEOservices.js"></script> -->
 		<base href="/">
     </head>
 	<body>
-		<div>
-		<!-- <div class="container"> -->
-			<!-- <div class="page-header"> -->
-
-				<canvas id="canvas"></canvas>
-				<h1 class="hero-text_heading">Jacob's Blog!</h1>
-				<a href="/">Homepage</a>
-				<br />
-				<a href="/login">Login/logout</a>
-				<br />
-				<a href="/users_view">View Users</a>
+		<div id="divBody">
+			<nav-bar></nav-bar>
+			<div class="jumbotron">
+				<h1 class="headingJumbo">Jacob's Blog!</h1>
+			</div>
+			<br />
 			<div ng-view></div>
 		</div>
 	</body>
+	<footer>
+			<h5 id="headerFooter">Contact me at:<br />Email: jacobjones7122@gmail.com</h5>
+	</footer>
 </html>
