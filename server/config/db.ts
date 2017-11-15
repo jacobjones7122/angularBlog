@@ -2,10 +2,10 @@ import * as mysql from 'mysql';
 
 export let pool = mysql.createPool({
     connectionLimit: 10,
-    host: 'localhost',
-    user: 'angularblogUser',
-    password: 'jangularjblog1',
-    database: 'angularblog'
+    host: process.env.DATABASE_URL,
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE_NAME
 });
 
 export function rows(procedureName: string, args: object) {
