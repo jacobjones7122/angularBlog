@@ -41,6 +41,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         controller: 'updatePostController',
         requiresLogin: true
     })
+    .when('/contact', {
+        templateUrl: 'views/contact.html',
+        controller: 'ContactController'
+    })
     .otherwise({
         redirectTo: '/'
     });

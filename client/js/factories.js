@@ -13,3 +13,7 @@ var app = angular.module('myBlogApp.factories', []);
             update: { method: 'PUT' }
         });  
     }]);
+
+    app.factory('ContactForm', ['$rosource', function($rosource) {
+        return $rosource('/api/contactforms/:id', { id: '@id' });
+    }]);

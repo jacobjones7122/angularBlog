@@ -204,3 +204,18 @@ app.controller('LoginController', ['SEOService', '$scope', '$location', 'UserSer
         UserService.logout().then($location.path('/'));
     }
 }]);
+
+app.controller('ContactController', ['$scope', 'ContactForm', function($scope, ContactForm){
+    $scope.send = function() {
+        let contact = new ContactForm({
+            from: $scope.email,
+            subject: $scope.subject,
+            message: $scope.message
+        });
+        contact.$save(function(){
+            alert('Thank you for your message. We will get back to you shortly.')
+        }, function(err){
+            console.log('error');
+        });
+    }
+}]);
