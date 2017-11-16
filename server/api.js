@@ -9,5 +9,5 @@ let router = express.Router();
 router.use('/posts', posts_ctrl_1.default);
 router.use('/users', users_ctrl_1.default);
 router.use('/categories', categories_ctrl_1.default);
-router.use('/contactforms', contactform_ctrl_1.default);
+router.use('/contactform', contactform_ctrl_1.default);
 exports.default = router;

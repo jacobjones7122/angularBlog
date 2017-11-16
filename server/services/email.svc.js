@@ -4,6 +4,7 @@ const sendgrid = require("sendgrid");
 const helper = sendgrid.mail;
 const sg = sendgrid(process.env.SENDGRID_API_KEY || '');
 function sendEmail(to, from, subject, message) {
+    console.log('In the email.svc');
     let toEmail = new helper.Email(to);
     let fromEmail = new helper.Email(from);
     let emailContent = new helper.Content('text/html', message);

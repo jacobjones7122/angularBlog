@@ -9,6 +9,6 @@ let router = express.Router();
 router.use('/posts', posts);
 router.use('/users', users);
 router.use('/categories', categories);
-router.use('/contactforms', contactForm);
+router.use('/contactform', contactForm);
 
 export default router;
