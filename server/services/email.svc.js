@@ -11,9 +11,10 @@ function sendEmail(to, from, subject, message) {
     let mail = new helper.Mail(fromEmail, subject, toEmail, emailContent);
     let request = sg.emptyRequest({
         method: 'POST',
-        path: 'v3/mail/send',
+        path: '/v3/mail/send',
         body: mail.toJSON()
     });
+    console.log(request.body);
     return sg.API(request);
 }
 exports.sendEmail = sendEmail;

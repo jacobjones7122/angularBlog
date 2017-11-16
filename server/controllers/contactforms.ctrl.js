@@ -10,6 +10,7 @@ router.post('/', (req, res) => {
         .then((response) => {
         res.sendStatus(204);
     }).catch((error) => {
+        console.log(error);
         res.sendStatus(500);
     });
 });
