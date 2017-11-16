@@ -15,5 +15,5 @@ var app = angular.module('myBlogApp.factories', []);
     }]);
 
     app.factory('ContactForm', ['$resource', function($resource) {
-        return $rosource('/api/contactforms/:id', { id: '@id' });
+        return $resource('/api/contactforms/:id', { id: '@id' });
     }]);
