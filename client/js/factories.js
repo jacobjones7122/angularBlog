@@ -17,3 +17,7 @@ var app = angular.module('myBlogApp.factories', []);
     app.factory('ContactForm', ['$resource', function($resource) {
         return $resource('/api/contactforms/:id', { id: '@id' });
     }]);
+
+    app.factory('CardForm', ['$resource', function($resource) {
+        return $resource('/api/donations/:id', { id: '@id'});
+    }]);

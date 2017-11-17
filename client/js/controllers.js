@@ -219,3 +219,29 @@ app.controller('ContactController', ['$scope', 'ContactForm', function($scope, C
         });
     }
 }]);
+
+
+app.controller('DonationController', ['$scope', 'CardForm', function($scope, CardForm) {
+    let elements = stripe.elements();
+    let card = elements.create('card');    
+    card.mount('#card-field');
+
+    $scope.process = function() {
+                stripe.createToken(card).then((result) => {
+            if (result.error) {
+                $scope.error = result.error.message;
+            } else {
+                let payment = new CardForm({
+                    token: result.token,
+                    amount: $scope.amount
+                });
+                payment.$save(function(success){
+                    console.log('success');
+                }, function(err){
+                    console.log('error');
+                    console.log(err);
+                })
+            }
+        })
+    }
+}]);

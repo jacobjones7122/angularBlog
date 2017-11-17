@@ -24,13 +24,22 @@
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-resource.js"></script>
+
+	
+		
+
 		<script src="js/app.js"></script>
 		<script src="js/directive.js"></script>
 		<script src="js/factories.js"></script>
 		<script src="js/controllers.js"></script>
 		<script src="js/draw.js"></script>
 		<script src="js/services.js"></script>
-		<base href="/">
+		<base href="/">	
+		
+		<script src="https://js.stripe.com/v3/"></script>
+		<script type="text/javascript">
+			let stripe = Stripe('pk_test_mCS6imJ1JjYlfA0Ws20iN26A');
+		</script>
     </head>
 	<body>
 		<div id="divBody">

@@ -45,6 +45,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         templateUrl: 'views/contact.html',
         controller: 'ContactController'
     })
+    .when('/donate', {
+        templateUrl: 'views/donations.html',
+        controller: 'DonationController'
+    })
     .otherwise({
         redirectTo: '/'
     });
